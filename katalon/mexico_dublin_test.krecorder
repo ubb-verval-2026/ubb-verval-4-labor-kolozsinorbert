@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="content-type" />
+<title>mexico_dublin_test</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3" data-tags="">Untitled Test Case</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>https://blazedemo.com/<datalist></datalist></td><td></td></tr>
+<tr><td>click</td><td>name=fromPort<datalist></datalist></td><td></td></tr>
+<tr><td>select</td><td>name=fromPort<datalist></datalist></td><td>label=Mexico City</td></tr>
+<tr><td>click</td><td>name=toPort<datalist></datalist></td><td></td></tr>
+<tr><td>select</td><td>name=toPort<datalist></datalist></td><td>label=Dublin</td></tr>
+<tr><td>click</td><td>xpath=//input[@value='Find Flights']<datalist></datalist></td><td></td></tr>
+<tr><td>storeXpathCount</td><td>/html/body/div[2]/table/tbody/tr<datalist></datalist></td><td>numberOfRows</td></tr>
+<tr><td>verifyEval</td><td>${numberOfRows}  >= 3<datalist><option>${numberOfRows} < 3</option><option>${numberOfRows} </option><option>${numberOfRows}  < 3</option><option>${numberOfRows}  >= 3</option></datalist></td><td>true</td></tr>
+</tbody></table>
+</body>
+</html>
