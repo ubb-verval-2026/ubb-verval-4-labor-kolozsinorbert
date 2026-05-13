@@ -133,6 +133,40 @@ public class PersonPageTests
         var salaryAfterSubmission = double.Parse(salaryLabel.Text);
         salaryAfterSubmission.Should().BeApproximately(5000 * (100 + salaryIncreasePercentage) / 100, 0.001);
     }
+
+    [Test]
+    public void Person_SalaryIncreaseMinus10_ShouldShowError()
+    {
+        // Arrange
+        driver.Navigate().GoToUrl(BaseURL);
+
+        var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
+
+        driver.FindElement(By.XPath("//*[@data-test='PersonPageNavigation']")).Click();
+
+        // Act
+        // addig probalkozunk, amig nem lesz stale 
+        bool stale = true;
+        while (stale)
+        {
+            stale = false;
+            try
+            {
+                var input = wait.Until(ExpectedConditions.ElementExists(By.XPath("//*[@data-test='SalaryIncreasePercentageInput']")));
+                input.Clear();
+                input.SendKeys("-11");
+            }
+            catch (StaleElementReferenceException)
+            {
+                stale = true;
+            }
+        }
+
+        // Assert
+        IsElementPresent(By.XPath("/html/body/div[1]/main/article/form/ul/li")).Should().BeTrue(); 
+        IsElementPresent(By.XPath("/html/body/div[1]/main/article/form/div[2]/div/div")).Should().BeTrue();
+    }
+
     private bool IsElementPresent(By by)
     {
         try
