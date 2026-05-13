@@ -108,6 +108,15 @@ public class PersonTests
     [Test]
     public void IncreaseSalary_SmallerThanMinusTenPerc_ShouldFail()
     {
-        // throw new NotImplementedException();
+        // Arrange
+        Person sut = PersonFactory.CreateTestPerson();
+        double initialSalary = sut.Salary;
+
+        // Act
+        var task = Task.Run(() => sut.IncreaseSalary(-11));
+        try { task.Wait(); } catch { }
+
+        // Assert
+        Assert.IsTrue(task.IsFaulted);
     }
 }
