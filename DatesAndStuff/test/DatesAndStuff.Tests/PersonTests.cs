@@ -113,7 +113,7 @@ public class PersonTests
         double initialSalary = sut.Salary;
 
         // Act
-        var task = Task.Run(() => sut.IncreaseSalary(-10));
+        var task = Task.Run(() => sut.IncreaseSalary(-11));
         try { task.Wait(); } catch { }
 
         // Assert
