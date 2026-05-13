@@ -20,5 +20,31 @@
 <tr><td>storeXpathCount</td><td>/html/body/div[2]/table/tbody/tr<datalist></datalist></td><td>numberOfRows</td></tr>
 <tr><td>verifyEval</td><td>${numberOfRows}  >= 3<datalist><option>${numberOfRows} < 3</option><option>${numberOfRows} </option><option>${numberOfRows}  < 3</option><option>${numberOfRows}  >= 3</option></datalist></td><td>true</td></tr>
 </tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3" data-tags="">screenshot</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>https://blazedemo.com/<datalist><option>https://blazedemo.com/</option></datalist></td><td></td></tr>
+<tr><td>store</td><td>300<datalist><option>300</option><option>200</option></datalist></td><td>GlobalVariable.priceLimit</td></tr>
+<tr><td>click</td><td>name=fromPort<datalist><option>name=fromPort</option></datalist></td><td></td></tr>
+<tr><td>select</td><td>name=fromPort<datalist><option>name=fromPort</option></datalist></td><td>label=Mexico City</td></tr>
+<tr><td>click</td><td>name=toPort<datalist><option>name=toPort</option></datalist></td><td></td></tr>
+<tr><td>select</td><td>name=toPort<datalist><option>name=toPort</option></datalist></td><td>label=Dublin</td></tr>
+<tr><td>click</td><td>xpath=//input[@value='Find Flights']<datalist><option>xpath=//input[@value='Find Flights']</option></datalist></td><td></td></tr>
+<tr><td>storeXpathCount</td><td>/html/body/div[2]/table/tbody/tr<datalist><option>/html/body/div[2]/table/tbody/tr</option></datalist></td><td>numberOfRows</td></tr>
+<tr><td>store</td><td>1<datalist><option>1</option><option>${numberOfRows} >= 3</option><option>${numberOfRows} < 3</option><option>${numberOfRows}</option><option>${numberOfRows} < 3</option><option>${numberOfRows} >= 3</option></datalist></td><td>i</td></tr>
+<tr><td>while</td><td>${i} <= numberOfRows<datalist><option>${i} <= numberOfRows</option></datalist></td><td></td></tr>
+<tr><td>storeText</td><td>//html/body/div[2]/table/tbody/tr[${i}]/td[6]<datalist><option>//html/body/div[2]/table/tbody/tr[${i}]/td[6]</option><option>/html/body/div[2]/table/tbody/tr[${i}]</option><option>/html/body/div[2]/table/tbody/tr[${i}][4]</option><option>/html/body/div[2]/table/tbody/tr[${i}]/td[4]</option><option>/html/body/div[2]/table/tbody/tr[${i}]/td[6]/</option><option>/html/body/div[2]/table/tbody/tr[${i}]/td[6]</option><option>/html/body/div[2]/table/tbody/tr[1]/td[6]</option><option>//html/body/div[2]/table/tbody/tr[1]/td[6]</option></datalist></td><td>price</td></tr>
+<tr><td>runScript</td><td>return '${price}'.substring(1)<datalist><option>return '${price}'.substring(1)</option><option>${price}</option><option>return price.substring(1)</option><option>return ${price}.substring(1)</option><option>return ${price}.substring(2)</option></datalist></td><td>price</td></tr>
+<tr><td>storeEval</td><td>${price} < ${GlobalVariable.priceLimit}<datalist><option>${price} < ${GlobalVariable.priceLimit}</option><option>${price}</option></datalist></td><td>result</td></tr>
+<tr><td>if </td><td>${result}<datalist><option>${result}</option></datalist></td><td></td></tr>
+<tr><td>captureEntirePageScreenshot</td><td>price_low.png<datalist><option>price_low.png</option><option>price-low</option><option>C:\Users\YourUsername\Desktop\table.png</option><option>"C:\Users\koloz\Desktop"</option><option>C:\Users\koloz\Desktop\price_low.png</option><option>"C:\Users\koloz\Desktop\price_low.png"</option></datalist></td><td></td></tr>
+<tr><td>echo</td><td>"OK"<datalist><option>"OK"</option></datalist></td><td></td></tr>
+<tr><td>store</td><td>${numberOfRows}<datalist><option>${numberOfRows}</option><option>numberOfRows</option></datalist></td><td>i</td></tr>
+<tr><td>endif</td><td><datalist><option></option></datalist></td><td></td></tr>
+<tr><td>runScript</td><td>return ${i} + 1<datalist><option>return ${i} + 1</option><option>${i}+1</option></datalist></td><td>i</td></tr>
+<tr><td>endWhile</td><td><datalist></datalist></td><td></td></tr>
+</tbody></table>
 </body>
 </html>
